@@ -1,13 +1,19 @@
 \documentclass[american,titlepage,oneside]{ntnuthesis}
-
 \title{A Modeling Environment in the Cloud for
 Education}
-\shorttitle{Cloud Modeling Environment}
+\shorttitle{Cloud Modeling for Education}
 \author{Kristian Rekstad}
 \shortauthor{K. Rekstad}
-\date{\ntnuthesisdate}
+\date{\parbox{\linewidth}{\centering%
+  \today\endgraf\bigskip
+  Specialization Project\endgraf\medskip
+  Dept.\ of Computer Science \endgraf{}
+  Norwegian University of Science and Technology}}
 
 \addbibresource{thesis.bib}
+
+% Formatting help: 
+% https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
 
 \input{glossary.tex} % add glossary and acronym lists before document
 
@@ -15,6 +21,7 @@ Education}
 
 \input{chapters/0a-abstract.tex}
 \input{chapters/0b-sammendrag.tex}
+\input{chapters/1-acknowledgments.tex} 
 
 \tableofcontents
 \listoffigures
@@ -25,7 +32,6 @@ Education}
 \printglossary{}                    % Print glossary
 
 
-\input{chapters/1-acknowledgments.tex} 
 \input{chapters/2-introduction.tex}
 \input{chapters/3-background.tex}
 \input{chapters/4-reviewed-research-questions.tex}

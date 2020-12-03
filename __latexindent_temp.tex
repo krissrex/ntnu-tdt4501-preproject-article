@@ -1,48 +1,58 @@
-\documentclass[american,titlepage,oneside]{ntnuthesis}
 
-\title{A Modeling Environment in the Cloud for
-Education}
-\shorttitle{Cloud Modeling Environment}
-\author{Kristian Rekstad}
-\shortauthor{K. Rekstad}
-\date{\ntnuthesisdate}
+% From https://www.overleaf.com/learn/latex/Glossaries
 
-\addbibresource{thesis.bib}
-
-\input{glossary.tex} % add glossary and acronym lists before document
-
-\begin{document}
-
-\input{chapters/0a-abstract.tex}
-\input{chapters/0b-sammendrag.tex}
-
-\tableofcontents
-\listoffigures
-\listoftables
-\lstlistoflistings{}
-
-\printglossary[type=\acronymtype] % Print acronyms
-\printglossary{}                    % Print glossary
+\makeglossaries % Prepare for adding glossary entries
 
 
-\input{chapters/1-acknowledgments.tex} 
-\input{chapters/2-introduction.tex}
-\input{chapters/3-background.tex}
-\input{chapters/4-reviewed-research-questions.tex}
-\input{chapters/5-method.tex}
-\input{chapters/6-results.tex}
-\input{chapters/7-evaluation.tex}
-\input{chapters/8-discussion.tex}
-\input{chapters/9-conclusion.tex}
+%\newglossaryentry{latex}
+%{
+%        name=latex,
+%        description={Is a mark up language specially suited for
+%scientific documents}
+%}
 
-% Sketch out Evaluation, Discussion, Conclusion.
-% Not main focus for pre-project.
+%\newglossaryentry{bibliography}
+%{
+%        name=bibliography,
+%        plural=bibliographies,
+%        description={A list of the books referred to in a scholarly work,
+%typically printed as an appendix}
+%}
 
-\chapter*{\bibname}
-\printbibliography[heading=none]
+\newglossaryentry{Theia}
+{
+  name=Theia,
+  description={An \acrshort{IDE} for software development. Theia is accessible in a web browser and as a desktop application. The implementation reuses much of \gls{VSCode}'s internals. Managed by the Eclipse Foundation.}
+}
 
+\newglossaryentry{VSCode}{
+  name=VSCode,
+  description={An \acrshort{IDE} for software development. The full name is Visual Studio Code. Managed by Microsoft.}
+}
 
-\appendix
-%\input{appendices/a-appendix.tex}
+\newglossaryentry{metamodel}{
+  name=metamodel,
+  description={In conceptual modeling, the model itself can be modeled. This model of the model is called a meta-model. \Gls{Ecore} is one example of a metamodel.}
+}
 
-\end{document}
+\newglossaryentry{Ecore}{
+  name=Ecore,
+  description={The \acrshort{emf} core model. A \gls{metamodel} similar to UML Class Diagrams.}
+}
+
+\newglossaryentry{Eclipse}{
+  name={Eclipse IDE},
+  description={An \acrshort{IDE} by the Eclipse Foundation. Originally created by IBM. It is based on a plugin architecture using OSGi, and is written in Java.}
+}
+
+% --------------------
+% ----- Acronyms -----
+% --------------------
+
+%\newacronym{phd}{PhD}{philosophiae doctor}
+%\newacronym{CoPCSE}{CoPCSE@NTNU}{Community of Practice in Computer ScienceEducation at NTNU}
+%\newacronym{gcd}{GCD}{Greatest Common Divisor}
+
+\newacronym{mdd}{MDD}{Model-Driven Development}
+\newacronym{IDE}{IDE}{Integrated Development Environment}
+\newacronym{emf}{EMF}{Eclipse Modeling Framework}
