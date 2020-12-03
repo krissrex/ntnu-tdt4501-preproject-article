@@ -1,10 +1,11 @@
-\documentclass[american,titlepage]{ntnuthesis}
+\documentclass[american,titlepage,oneside]{ntnuthesis}
 
-\title{An NTNU Thesis \LaTeX{} Document Class}
-\shorttitle{An NTNU Thesis Document Class}
-\author{Community of Practice in Computer Science Education at NTNU}
-\shortauthor{CoPCSE$@$NTNU}
-\date{CC-BY \ntnuthesisdate}
+\title{A modeling environment in the cloud for
+education}
+\shorttitle{Cloud modeling environment}
+\author{Kristian Rekstad}
+\shortauthor{K. Rekstad}
+\date{\ntnuthesisdate}
 
 \addbibresource{thesis.bib}
 
@@ -18,22 +19,30 @@
 \tableofcontents
 \listoffigures
 \listoftables
-\lstlistoflistings
+\lstlistoflistings{}
 
 \printglossary[type=\acronymtype] % Print acronyms
-\printglossary                    % Print glossary
+\printglossary{}                    % Print glossary
 
-\input{chapters/1-introduction}
-\input{chapters/2-usage.tex}
-\input{chapters/3-structure.tex}
-\input{chapters/4-conclusion.tex}
+
+\input{chapters/1-acknowledgments.tex} 
+\input{chapters/2-introduction.tex}
+\input{chapters/3-background.tex}
+\input{chapters/4-reviewed-research-questions.tex}
+\input{chapters/5-method.tex}
+\input{chapters/6-results.tex}
+\input{chapters/7-evaluation.tex}
+\input{chapters/8-discussion.tex}
+\input{chapters/9-conclusion.tex}
+
+% Sketch out Evaluation, Discussion, Conclusion.
+% Not main focus for pre-project.
 
 \chapter*{\bibname}
 \printbibliography[heading=none]
 
-\input{chapters/papers.tex}
 
 \appendix
-\input{appendices/a-appendix.tex}
+%\input{appendices/a-appendix.tex}
 
 \end{document}
