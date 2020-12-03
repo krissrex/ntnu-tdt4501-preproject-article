@@ -1,2 +1,35 @@
 \section{Context}
 
+%Software engineering + modeling
+Software engineering is a broad field. It has multiple approaches to methodology, programming languages, practices and paradigms.
+One approach to developing software systems is to model a domain.
+The domain is usually a phenomena in the real world which a business is interested in. And the conceptual model is an abstraction of this domain, where essential actors, entities, properties and relationships are formalized.
+
+% MDSE, MDD, MBD
+This conceptual model can be utilized by the engineers to various degrees.
+It could simply document the domain in order to help understanding and communication among those working with the domain. Or the model could be the basis of a software system. The software could be generated automatically based on the model, or an interpreting system could execute the model itself.
+
+% MDD
+When the model itself is the source of truth for software, the model is \textit{driving} the development. This is called \acrfull{mdd}. Changes to the domain result in changes to the model, before changing the system's code. And the code itself is \textit{derived from the model}, often using model-to-text transformations. Oftentimes a \textit{complete} system can not be generated, and a programmer is required to manually code some details or rules of the domain into the generated code.
+
+% Education of MDD
+The concepts and tools used in \acrshort{mdd} are being taught to software engineering students.
+Not all curriculums include \acrshort{mdd}, as it is mostly relevant for specializations in Software Development. %Skip sentence?
+Development using models is very reliant on tools. One of the tools that students learn is the \acrfull{emf} and its \gls{metamodel} called \gls{Ecore}.
+
+% EMF details
+
+% Issues with EMF
+Despite \acrshort{emf} being a great framework, its tight integration with \gls{Eclipse} harms the adoption. Some students have a negative attitude against \gls{Eclipse}, and learning about its architecture feels like wasted time.
+\textcite{kuzniarzTeachingModelDrivenSoftware2016} found that students resist when the technology and skills are not used in other courses.
+A general problem for \acrshort{mdd} adoption identified by \textcite{jonwhittleTaxonomyToolrelatedIssues2015} was a low impact on personal career needs. 
+The students look to the industry, and mostly find mentions of ``IntelliJ, React, Typescript, Scrum, AI'', never Eclipse. They forget that much of the popular technologies are hype driven, and not the only tools used.
+\textcite[p.~21--23]{brambillaModelDrivenSoftwareEngineering2017} claims that model-driven software engineering has passed the peak of the hype curve, and is now in the ``slope of enlightenment''. This means \acrshort{mdd} is not dead, but rather that we are only now seeing how it is best used.\footnote{Compare this to how the hyped Blockchain was supposed to fix every problem, but now we see it doesn't solve much at all.} 
+
+% My proposal
+
+%TODO
+
+% Related works and their shortcomings
+
+
