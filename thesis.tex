@@ -5,6 +5,13 @@
 %
 
 \documentclass[american,titlepage,oneside]{ntnuthesis}
+
+% Research questions
+\newlist{questions}{enumerate}{2}
+\setlist[questions,1]{label=\textbf{RQ\arabic*.},ref=RQ\arabic*,labelindent=\parindent,leftmargin=*,}
+\setlist[questions,2]{label=--- \textbf{\thequestionsi.\arabic*.},ref=\thequestionsi\arabic*,leftmargin=*}
+%
+
 \title{A Modeling Environment in the Cloud for
 Education}
 \shorttitle{Cloud Modeling for Education}
@@ -12,7 +19,7 @@ Education}
 \shortauthor{K. Rekstad}
 \date{\parbox{\linewidth}{\centering%
   \today\endgraf\bigskip
-  Specialization Project\endgraf\medskip
+  Specialization Project for Master's Thesis\endgraf\medskip
   Dept.\ of Computer Science \endgraf{}
   Norwegian University of Science and Technology}}
 
