@@ -20,6 +20,7 @@ When the model itself is the source of truth for software, the model is \textit{
 The concepts and tools used in \acrshort{mdd} are being taught to software engineering students.
 Not all curriculums include \acrshort{mdd}, as it is mostly relevant for specializations in Software Development. %Skip sentence?
 Development using models is very reliant on tools. One of the tools that students learn is the \acrfull{emf} and its \gls{metamodel} called \gls{Ecore}.
+An advantage of \acrshort{emf} is the \gls{open source} nature, which allows students to look inside its implementation, and use it for free.\footnote{Compare this to Matlab+Simulink, which some students learn. It costs 20000 NOK per year for a license.}
 
 % EMF details
 \paragraph*{EMF in detail}
@@ -32,15 +33,22 @@ This editor lets a user enter objects from their domain. For example, if the dom
 Despite \acrshort{emf} being a great framework, its tight integration with \gls{Eclipse} harms the adoption. Some students have a negative attitude against \gls{Eclipse}, and learning about its architecture feels like wasted time.
 \textcite{kuzniarzTeachingModelDrivenSoftware2016} found that students resist when the technology and skills are not used in other courses.
 A general problem for \acrshort{mdd} adoption identified by \textcite{jonwhittleTaxonomyToolrelatedIssues2015} was a low impact on personal career needs. 
-The students look to the industry, and mostly find mentions of ``IntelliJ, React, Typescript, Scrum, AI'', never Eclipse. They forget that much of the popular technologies are hype driven, and not the only tools used.
-\textcite[p.~21--23]{brambillaModelDrivenSoftwareEngineering2017} claims that model-driven software engineering has passed the peak of the hype curve, and is now in the ``slope of enlightenment''. This means \acrshort{mdd} is not dead, but rather that we are only now seeing how it is best used.\footnote{Compare this to how the hyped Blockchain was supposed to fix every problem, but now we see it doesn't solve much at all.} One author of \cite{brambillaModelDrivenSoftwareEngineering2017} tried teaching students in 2015, and collected their feedback. Much of the complaints were about installation issues and problems with the tools. \cite{jordicabotFailedConvinceMy2015}
-
+The students look to the industry, and mostly find mentions of ``Cloud, IntelliJ, React, Typescript, Scrum, AI'', never Eclipse. They forget that much of the popular technologies are hype driven, and not the only tools used.
+\textcite[p.~21--23]{brambillaModelDrivenSoftwareEngineering2017} claims that model-driven software engineering has passed the peak of the hype curve, and is now in the ``slope of enlightenment''. This means \acrshort{mdd} is not dead, but rather that we are only now seeing how it is best used.\footnote{Compare this to how the hyped Blockchain was supposed to fix every problem, but now we see it doesn't solve much at all.} A co-author of \cite{brambillaModelDrivenSoftwareEngineering2017} tried teaching students in 2015, and collected their feedback. Much of the complaints were about installation issues and problems with the tools. \cite{jordicabotFailedConvinceMy2015}
 
 % My proposal
+\paragraph*{The proposed solution}
+A platform shift from the \gls{Eclipse} desktop application to the \gls{cloud} could alleviate many of the problems. An editor in the \gls{cloud} would have to be web-based, and could use many of today's modern (and popular) technologies. 
+Another win is that an ``editor-as-a-service'' does not need installation.
+As mentioned, this caused many problems in \cite{jordicabotFailedConvinceMy2015}. 
+Editors based on web technology is not unheard of either. One such editor that has become very popular, is Microsoft's \gls{VSCode}.\footnote{This thesis is written using \gls{VSCode}!}
+In fact, the Eclipse Foundation itself has picked up on this trend, and adopted a web-based editor called \gls{Theia}.
+This means that the platforms to build a \gls{cloud} based modeling editor are here. 
+This is not a new thought either, as \textcite{lajmiModelingBrowserWhat2016} said in 2016: \textquote{the next wave of modeling tools will probably be based on cloud IDEs.}
+On the other hand, recreating the entire \acrlong{emf} is no easy task. Therefore, its tooling for validation, serialization etc.\ should be reused if possible.
 
-
-%TODO
 
 % Related works and their shortcomings
+\paragraph*{Related works}
 
-
+%TODO write.
