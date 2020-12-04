@@ -6,12 +6,18 @@
     "editor.rulers": [80],
     "editor.wordWrapColumn": 80,
     "editor.formatOnPaste": true,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false
     // "editor.suggestSelection": "recentlyUsedByPrefix"
   },
   "[bibtex]": {
     "editor.wordWrap": "wordWrapColumn",
-
+  },
+  "[tex]": {
+    // Enable intellisence/quick suggestions
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // Indentation size
+    "editor.tabSize": 2
   },
   // https://github.com/James-Yu/LaTeX-Workshop/wiki
   "latex-workshop.latex.autoClean.run": "onBuilt",
@@ -30,23 +36,39 @@
   "latex-workshop.view.pdf.viewer": "tab",
   "latex-workshop.bibtex-format.sort.enabled": true,
   "latex-workshop.message.badbox.show": false,
-  "latex-workshop.progress.enabled": false,
-  "latex-workshop.latex.recipes": [
-    {
-      "name": "pdflatex ➞ bibtex ➞ pdflatex`×2",
-      "tools": [
-        "pdflatex",
-        "bibtex",
-        "pdflatex",
-        "pdflatex"
-      ]
-    }
-  ],
+  "latex-workshop.progress.enabled": true,
+  "latex-workshop.progress.runIconType": "Solid Circled",
   "latex-workshop.latexindent.args": [
     "-c",
     "%DIR%/",
     "%TMPFILE%",
     "-y=defaultIndent: '%INDENT%', ",
     "-l=%DIR%/indentconfig.yaml"
-  ]
+  ],
+
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.nav",
+    "*.dvi",
+    "*.synctex.gz"
+],
 }
