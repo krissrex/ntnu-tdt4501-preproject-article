@@ -6,7 +6,7 @@ This section will describe the most relevant \acrfullpl{IDE} for \acrlong{emf} a
 
 \paragraph*{What it is}
 Visual Studio Code (\gls{VSCode}) is a text editor and \acrfull{IDE} created by
-Microsoft. The VSCode editor is based on the \gls{open source} software (OSS) called \emph{VS Code Project}.~\cite{helmingEclipseTheiaIDE2019} 
+Microsoft. The VSCode editor is based on the \gls{open source}\footnote{Source for VSCode is available at \href{https://github.com/microsoft/vscode}{https://github.com/microsoft/vscode}} software (OSS) called \emph{VS Code Project}.~\cite{helmingEclipseTheiaIDE2019} 
 The VSCode editor has Microsoft-specific customizations, which makes it slightly different from the OSS project.~\cite{microsoftMicrosoftVscode2020} (This is analogous to the relationship between the \gls{open source} Chromium and the proprietary Google Chrome.)
 
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
@@ -19,22 +19,71 @@ The VSCode editor has Microsoft-specific customizations, which makes it slightly
 VSCode has no support for diagrams or binary file viewers (like 3D models) out of the box. By default, it supports \texttt{Javascript}, \texttt{Typescript} and \texttt{Markdown}; common technologies related to web development.
 VSCode can be extended to support other languages and editors, see \cref{chap:vscode-extension}.
 
-VSCode runs as a desktop application, and uses Electron and javascript for its runtime.
-The actual text editor in \gls{VSCode} is called \emph{Monaco}, and is separated out as a standalone package.
-
 % What does it do?
 % Who made it?
 % Architecture
 
+\paragraph*{Architecture}
+VSCode runs as a desktop application, and uses Electron and javascript for its runtime.
+The architecture is centered on a \emph{core} which loads \emph{extensions}.
+The core is shown in \cref{fig:vscode-layers-architecture}, and is split internally into \emph{layers} with different responsibilies.
+Each layer is again organized based on the target runtime, like \emph{browser} or \emph{\gls{Electron}}, as seen in \cref{fig:vscode-component-architecture}.
+The actual text editor in \gls{VSCode} is called \emph{Monaco}, and is available as a standalone package.~\cite{benjaminpaseroSourceCodeOrganization2020}
+
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=\textwidth]{figures/vscode-component-architecture}
+  \caption[VSCode component Architecture]{The internal architecture of each component in VSCode. The \texttt{<<layer>>} label represents each of the layers in \cref{fig:vscode-layers-architecture}, like \emph{base} or \emph{platform}. Every layer is organized by runtime dependencies.~\cite{benjaminpaseroSourceCodeOrganization2020}}\label{fig:vscode-component-architecture}
+\end{figure}
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=2cm]{figures/vscode-layers-architecture}
+  \caption[VSCode Layers]{The internal layers that VSCode is separated into.~\cite{benjaminpaseroSourceCodeOrganization2020}}\label{fig:vscode-layers-architecture}
+\end{figure}
+
+
+
 \subsubsection{Theia}\label{sec:theia}
 
 \paragraph*{What it is}
+\Gls{Theia} is an editor like \gls{VSCode}, but designed from the start to work in web browsers.
+The project was originally started by TypeFox, and then donated to the Eclipse Foundation.
+It is free and fully \gls{open source}\footnote{Source for Theia is available at \href{https://github.com/eclipse-theia/theia/}{https://github.com/eclipse-theia/theia/}}.
+\Gls{Theia} is based on some of the same components as \gls{VSCode}, and uses Monaco as well.
+The main uses of Theia now is as an editor for workspace software like \gls{Che} and \gls{Gitpod}.
+
+\paragraph*{Intended use}
 \Gls{Theia} was created to be a framework for creating custom and
 white-labeled \acrshortpl{IDE} and tools. Theia itself was not an IDE.~\cite{helmingEclipseTheiaIDE2019}
-The project was originally started by TypeFox, but donated to the Eclipse Foundation.
-It is free and fully \gls{open source}.
-\Gls{Theia} is based on the same components as \gls{VSCode}, and uses Monaco as well.
-The main uses of Theia now is as an editor for workspace software like \gls{Che} and \gls{Gitpod}.
+
+\paragraph*{Architecture --- runtime}
+The architecture of Theia is similar to \gls{VSCode}.
+The biggest difference is in the runtime.
+\Gls{Theia} is split into a backend and frontend process. 
+The backend can run remotely. 
+The frontend is \gls{Electron} or a browser.
+The backend and frontend communicate with \gls{JSON-RPC} over \glspl{WebSocket} or \gls{REST}/HTTP.
+Both the frontend and backend source codes are heavily architected around
+\emph{dependency injection}.
+The backend runs an \texttt{ExpressJs} web server which serves code to the frontend (see \cref{fig:theia-communication}).~\cite{typefoxArchitectureOverview}
+
+The frontend can always assume it has \texttt{browser API}, but not
+\texttt{NodeJS}/\texttt{Electron} \gls{API}.~\cite{typefoxArchitectureOverview}
+
+To support different programming languages, the backend talks over the \acrfull{LSP} with different \emph{language servers}.
+One backend process serves one workspace/user.
+Multiple clients can connect, but they will all share the same workspace.~\cite{MultiLanguageIDEImplemented2017}
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=4cm]{figures/theia-api.png}
+  \caption[Theia frontend and backend communication]{Theia serves the frontend with ExpressJs and communicates between the frontend and backend with JSON-RPC.}\label{fig:theia-communication}
+\end{figure}
+
+\paragraph*{Architecture --- modules}
+
 
 % What does it do?
 % Who made it?
