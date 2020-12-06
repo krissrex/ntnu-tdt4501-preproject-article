@@ -7,7 +7,7 @@ This section will describe the most relevant \acrfullpl{IDE} for \acrlong{emf} a
 \paragraph*{What it is}
 Visual Studio Code (\gls{VSCode}) is a text editor and \acrfull{IDE} created by
 Microsoft. The VSCode editor is based on the \gls{open source}\footnote{Source for VSCode is available at \href{https://github.com/microsoft/vscode}{https://github.com/microsoft/vscode}} software (OSS) called \emph{VS Code Project}.~\cite{helmingEclipseTheiaIDE2019} 
-The VSCode editor has Microsoft-specific customizations, which makes it slightly different from the OSS project.~\cite{microsoftMicrosoftVscode2020} (This is analogous to the relationship between the \gls{open source} Chromium and the proprietary Google Chrome.)
+The VSCode editor has Microsoft-specific customizations, which makes it slightly different from the OSS project.~\cite{MicrosoftVscode2020} (This is analogous to the relationship between the \gls{open source} Chromium and the proprietary Google Chrome.)
 
 \begin{figure}[htbp]
   \centering
@@ -16,7 +16,7 @@ The VSCode editor has Microsoft-specific customizations, which makes it slightly
 \end{figure}
 
 \paragraph*{Intended use} Primarily an editor for textual programming languages.
-VSCode has no support for diagrams or binary file viewers (like 3D models) out of the box. By default, it supports \texttt{Javascript}, \texttt{Typescript} and \texttt{Markdown}; common technologies related to web development.
+VSCode has no support for diagrams or binary file viewers (like 3D models) out of the box (except pictures like \texttt{png} etc.). By default, it supports \texttt{Javascript}, \texttt{Typescript} and \texttt{Markdown}; common technologies related to web development.
 VSCode can be extended to support other languages and editors, see \cref{chap:vscode-extension}.
 
 % What does it do?
@@ -40,7 +40,7 @@ The actual text editor in \gls{VSCode} is called \emph{Monaco}, and is available
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=2cm]{figures/vscode-layers-architecture}
-  \caption[VSCode Layers]{The internal layers that VSCode is separated into.~\cite{benjaminpaseroSourceCodeOrganization2020}}\label{fig:vscode-layers-architecture}
+  \caption[VSCode Layers]{The internal layers which the VSCode \texttt{core} is separated into.~\cite{benjaminpaseroSourceCodeOrganization2020}}\label{fig:vscode-layers-architecture}
 \end{figure}
 
 
@@ -104,7 +104,7 @@ Of particular interest is the \texttt{Extensions} component with \texttt{Inversi
 
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
-  \includegraphics[width=\textwidth]{figures/Multi-Language IDE implemented in JS Scope and Architecture}
+  \includegraphics[width=\textwidth]{figures/Multi-Language-IDE-implemented-in-JS-Scope-and-Architecture}
   \caption[Theia module Architecture]{The main components in Theia. Some components have third party libraries, languages or runtimes listed under their component name, as examples. The figure is from a design document made in 2017, and could be outdated. (The author is unknown, but assumed to be a TypeFox employee. The document is linked to on the official Theia website).~\cite{MultiLanguageIDEImplemented2017}}\label{fig:theia-components}
 \end{figure}
 
@@ -125,8 +125,14 @@ Every Theia extension can also provide two entrypoints: \texttt{frontend} and \t
 % Architecture
 
 \subsubsection{Eclipse IDE}\label{sec:eclipse-ide}
-%TODO: write
 % What does it do?
 % Who made it?
 % Architecture
+
+\paragraph*{What it is}
+%TODO: write
+
+\paragraph*{Intended use}
+
+\paragraph*{Architecture}
 
