@@ -59,7 +59,7 @@ Both of these files are \acrshort{XMI} serializations.
 
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
-  \includegraphics[width=.5\textwidth]{figures/Sirius_architecture}
+  \includegraphics[width=\textwidth]{figures/Sirius_architecture}
   \caption[The Sirius Architecture]{The diagram shows the different components in Eclipse Sirius. The components on the top depend on the components below.~\cite[p.~36]{davidSiriusCon2018Sirius2018}.}\label{fig:sirius-architecture}
 \end{figure}
 
@@ -74,11 +74,19 @@ After a workbench is designed, the developer produces an Eclipse \emph{plugin} t
 % When? Who? Why?
 
 \paragraph*{What it is}
-Sirius Web is an ongoing effort\footnote{As of 2020. It is supposed to be ready near the start of 2021} to move the end-user editors of Sirius to the web.
+Sirius Web is an ongoing effort\footnote{As of 2020. It is supposed to be ready near the start of 2021.} to move the end-user editors of Sirius to the web.
 The goal is to allow end-users to model with their browsers, instead of the \gls{Eclipse}.
+Sirius Web will be \gls{open source}.
+An illustration of Sirius Web's internal architecture is shown in \cref{fig:sirius-web-architecture}. Note that this is a work in progress, so the actual architecture may deviate once Sirius Web is released.
+The end-user will only see the \emph{Sirius Web Frontend} (or \emph{Sirius \acrshort{RCP}}, which is the old Sirius in \cref{sec:sirius}).
+
+Sirius Web does not use Theia, but its representations \textit{can} be shown in Theia.~\cite{neilmackenzieSiriusWebXText2020}
+
+\paragraph*{Using it} A developer creates Sirius specifications in \emph{Eclipse Sirius} or \emph{Obeo Designer} as before. 
+Then they deploy the specifications as a Sirius Web editor, instead of an Eclipse plugin.
 
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
-  \includegraphics[width=.5\textwidth]{figures/Sirius-future-web-architecture}
-  \caption[The Sirius Web Architecture]{The diagram shows the different components that will be in Sirius Web.~\cite[p.~37]{davidSiriusCon2018Sirius2018}}\label{fig:sirius-web-architecture}
+  \includegraphics[width=\textwidth]{figures/Sirius-future-web-architecture}
+  \caption[The Sirius Web Architecture]{The diagram shows the different components that will be in Sirius Web. Components on the top depend on components below.~\cite[p.~37]{davidSiriusCon2018Sirius2018}}\label{fig:sirius-web-architecture}
 \end{figure}
