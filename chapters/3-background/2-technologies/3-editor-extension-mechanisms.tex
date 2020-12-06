@@ -53,8 +53,11 @@ A list of supported \acrshortpl{API} can be found at \href{https://che-incubator
 Most notably for this thesis, is that the \texttt{registerCustomEditorProvider}, \texttt{CustomEditorProvider} and \texttt{createWebviewPanel}\footnote{However, this merge says Theia should support it \href{https://github.com/eclipse-theia/theia/pull/3484}{https://github.com/eclipse-theia/theia/pull/3484}.} are not supported yet.
 (Progress for Custom editors can be followed in \href{https://github.com/eclipse-theia/theia/issues/6636}{https://github.com/eclipse-theia/theia/issues/6636}).
 
+\paragraph*{Installing a Theia Plugin}
+Either search for the plugin inside the plugin browser provided by \gls{Theia},
+or drag-and-drop a \texttt{.vsix} file into the extension browser.
+Theia will only search for plugins on OpenVSX, not the Visual Studio Marketplace.
 
-%TODO: Write
 % Who can use it
 % How is it structured?
 % What can it do?
@@ -71,8 +74,11 @@ Extensions were the original mechanism added to Theia for customizing its behavi
 They are allowed full access to Theia, and can do anything\footnote{Within the scope of browsers and \gls{Nodejs}.}.~\cite{helmingEclipseTheiaExtensions2019,helmingEclipseTheiaIDE2019a}
 All the main features of Theia are provided using Theia Extensions.
 
+\paragraph*{Installing an extension}
+To install a Theia Extension, a developer has to compile Theia itself.
+The extension must be available as a package, e.g.\ on \gls{NPM} or as a local folder, and added to the \texttt{package.json} as a dependency.~\cite{helmingHowAddExtensions2019}
+For an \gls{NPM} package, the extension's \texttt{package.json} should contain \texttt{``theia-extension''} in the \texttt{keywords}.~\cite{typefoxAuthoringTheiaExtensions}
 
-%TODO: Write
 % Who can use it
 % How is it structured?
 % What can it do?
