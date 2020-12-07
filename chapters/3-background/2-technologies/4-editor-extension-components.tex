@@ -6,7 +6,7 @@ Some of the libraries belong to \emph{EMF.Cloud}.
 That is an Eclipse Foundation project umbrella for \gls{emf} tools for the \gls{cloud}\footnote{Eclipse EMF.cloud homepage: \href{https://projects.eclipse.org/projects/ecd.emfcloud}{https://projects.eclipse.org/projects/ecd.emfcloud}.}.
 
 
-\subsubsection{Sprotty}
+\subsubsection{Sprotty}\label{sec:sprotty}
 Eclipse Sprotty is an \gls{open source}\footnote{Sprotty source: \href{https://github.com/eclipse/sprotty}{https://github.com/eclipse/sprotty}.} library to render diagrams in web browsers.
 It uses Typescript, CSS and svg.
 Sprotty can animate diagram changes.
@@ -23,7 +23,7 @@ The library is mainly developed by TypeFox and EclipseSource, and managed by the
   \caption[Sprotty Example]{This is a screenshot of Theia with a Sprotty diagram on the right side.~\cite{eclipsefoundationEclipseSprotty2020}}\label{fig:sprotty-example}
 \end{figure}
 
-\subsubsection{EMF.Cloud --- Theia Tree Editor}
+\subsubsection{EMF.Cloud --- Theia Tree Editor}\label{sec:theia-tree-editor}
 The \emph{Theia Tree Editor} is an \gls{open source}\footnote{Theia Tree Editor source: \href{https://github.com/eclipse-emfcloud/theia-tree-editor/tree/master/theia-tree-editor}{https://github.com/eclipse-emfcloud/theia-tree-editor/tree/master/theia-tree-editor}.} javascript framework for building tree editors in \gls{Theia}.~\cite{EclipseemfcloudTheiatreeeditor2020}
 The framework is targeted at Theia Extensions (see \cref{sec:theia-extension}), and can not probably not be used in \gls{VSCode}\footnote{It \textit{may} be possible, if the VSCode extension pulls in the Theia \texttt{core}, however there could be dependencies to other \gls{Theia} \acrshortpl{API} as well.}.
 The main reason is the dependence on tree structures defined in the Theia \acrshort{IDE} project itself (see \cref{fig:theia-tree-editor-node}).
