@@ -66,4 +66,20 @@ Note that this is only a small subset of the data structures defined in \gls{LSP
 % TODO: write
 
 \subsection{JSON-RPC}
-% TODO: write
+
+\paragraph*{Description}
+\emph{JSON-RPC} is a stateless \acrfull{RPC} protocol.
+That means it allows one process to call \emph{procedures} (methods, subroutines, functions) in another process.
+The format for serializing the calls' data is \gls{JSON}.
+A key design goal is to be a simple protocol.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+
+The protocol does not limit the \emph{transport mechanism} used, so \gls{JSON-RPC} could be sent inside the same process, across sockets, HTTP or any other form of message passing transport.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+
+\paragraph*{Protocol}
+The main definitions are data structures and error codes.
+\Gls{JSON-RPC} defines a \texttt{Request} and \texttt{Response} object.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+
+The Request must have an \texttt{id}, \texttt{method} name, \texttt{params} data structure and \texttt{jsonrpc} version field.
+A Request without an \texttt{id} is a \texttt{Notification}, and will not get a Response back.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+
+The Response must have an \texttt{id}, \texttt{result} or \texttt{error} data structure, and a \texttt{jsonrpc} version field.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
