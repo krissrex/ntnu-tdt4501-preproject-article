@@ -1,10 +1,69 @@
 \section{Protocols}\label{sec:protocols}
 
-\subsubsection{Language Server Protocol (LSP)}\label{sec:lsp}
+This section will describe some of the protocols used by the editors in \cref{sec:editors} and extensions in \cref{sec:extension-components}.
+
+\subsection{Language Server Protocol (LSP)}\label{sec:lsp}
+
+\paragraph*{Goal} An \gls{IDE} often has to support many programming languages.
+Most of the languages support some common features, such as autocomplete,  validation, definitions, references, renaming, selection etc..
+The \gls{LSP} tries to separate language editor clients from language servers.
+The clients are kept generic, while the language servers know the details for a programming language.~\cite{microsoftOverview}
+This means a \gls{IDE} developer only needs to create \textit{one} editor, with generic \gls{LSP} support.
+And a language developer only needs to create a language server.
+If the language server adheres to the \gls{LSP} protocol, any \gls{LSP} client will automatically support it.
+This is illustrated in \cref{fig:lsp-benefits}.
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=\textwidth]{figures/lsp-languages-editors}
+  \caption[LSP Benefits]{The benefits of using \gls{LSP}. There is no need for re-creating language support for every possible combination of editor and language.~\cite{microsoftLanguageServerExtension2020}}\label{fig:lsp-benefits}
+\end{figure}
+
+
+\paragraph*{Details}
+The protocol is based on a \emph{Base protocol}, which has a \texttt{key-value} \emph{header} and a \emph{content} with \gls{JSON-RPC} (see \cref{fig:lsp-protocol}).
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/lsp-protocol}
+  \caption[The LSP Protocol]{The LSP protocol extends a Base protocol that uses HTTP headers and JSON-RPC content.}\label{fig:lsp-protocol}
+\end{figure}
+
+\paragraph*{The Base protocol}
+The header fields conform to the HTTP specification\footnote{RFC-7230 at \href{https://tools.ietf.org/html/rfc7230\#section-3.2}{https://tools.ietf.org/html/rfc7230\#section-3.2}.} with regards to structure and formatting.
+
+The Base protocol defines tree different message types that are sent in the \gls{JSON-RPC} content: \emph{Request}, \emph{Response} and \emph{Notificaion}.
+There are also two key rules: every Request must be answered with a Response, and Notificaion does not need a Response.
+The Base protocol provides a list of common error codes, extending the default error codes that \gls{JSON-RPC} provides.~\cite{microsoftLanguageServerProtocol2020}
+
+The Base protocol defines a rule for Request and Notification methods as well: a method starting with \texttt{\$/} is protocol implementation specific and therefore optional, meaning a client or server can skip implementing it if the method is not suitable\footnote{The example given is cancellation of asynchronous tasks in a server that is synchronous.}.~\cite{microsoftLanguageServerProtocol2020}
+
+Lastly, the Base protocol defines two Notifications: \texttt{\$/progress} and \texttt{\$/cancelRequest}.~\cite{microsoftLanguageServerProtocol2020}
+
+\paragraph*{The Language Server Protocol}
+The actual \emph{Language Server Protocol} itself is a large collection of \gls{JSON-RPC} Request, Response and Notification messages sent over the Base protocol.
+The protocol assumes that \textit{one} language server is used for \textit{one} language client.~\cite{microsoftLanguageServerProtocol2020}
+This means a language server can not be shared between multiple clients.
+
+The protocol is tailored for textual languages and text documents.
+It specifies a collection of data structures that should be used.
+A central data structure is the \texttt{TextDocument}.
+Inside a \texttt{TextDocument}, there can be \texttt{Location}s in the text, and \texttt{Range}s of text between two \texttt{Location}s.
+Changing a \texttt{TextDocument} is done by constructing a \texttt{TextDocumentEdit}, which holds a list of text replacements in \texttt{TextEdit}s, and a pointer to a \texttt{TextDocument} version using a \texttt{VersionedTextDocumentIdentifier}.
+A \texttt{TextEdit} has \texttt{Range} to edit and a string with the new text.~\cite{microsoftLanguageServerProtocol2020}
+An illustration of the data structures are shown in \cref{fig:lsp-data-structures}.
+Note that this is only a small subset of the data structures defined in \gls{LSP}\footnote{Most of the supported features are described at \href{https://code.visualstudio.com/api/language-extensions/language-server-extension-guide\#additional-language-server-features}{https://code.visualstudio.com/api/language-extensions/language-server-extension-guide\#additional-language-server-features}.}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/lsp-textdocument-data}
+  \caption[LSP Central Data Structures]{Central data structures in \gls{LSP}.}\label{fig:lsp-data-structures}
+\end{figure}
+
+
+\subsection{Graphical Language Server Platform (GLSP)}\label{sec:glsp}
+
 % TODO: write
 
-\subsubsection{Graphical Language Server Platform (GLSP)}\label{sec:glsp}
-% TODO: write
-
-\subsubsection{JSON-RPC}
+\subsection{JSON-RPC}
 % TODO: write
