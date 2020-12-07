@@ -34,10 +34,34 @@ This code converts the model instances to text labels (\href{https://git.eclipse
     \caption{Screenshots of the Sample Reflective Ecore Model Editor in \gls{Eclipse}.}\label{fig:sample-reflective-ecore-model}
 \end{figure}
 
+
 \subsubsection{EMF Forms Ecore Editor} % EMF Forms based
+The \emph{EMF Forms Ecore Editor} is based on \emph{EMF Forms}\footnote{\href{https://eclipsesource.com/blogs/tutorials/emf-forms-editors/}{https://eclipsesource.com/blogs/tutorials/emf-forms-editors/}}, a library to create form editors for \gls{Ecore} models.
+It runs in \gls{Eclipse}.
+The editor supports both \texttt{.ecore}, \texttt{.xmi} and \texttt{.genmodel} files.
+It has a generic editor for all \gls{XMI} files\footnote{\emph{Generic XMI Editor} in \gls{Eclipse}.}, and specialized editors for ecore\footnote{\emph{Ecore Editor} in \gls{Eclipse}.} and genmodel.~\cite{eclipsesourceEMFFormsEditors2016}
+
+A screenshot can be seen in \cref{fig:emf-forms-ecore-editor}.
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=\textwidth]{figures/ecore-eclipse-emf-forms-model-editor.png}
+  \caption[EMF Forms Ecore Editor]{A screenshot of a model in the EMF Forms based Ecore Editor.}\label{fig:emf-forms-ecore-editor}
+\end{figure}
+
+
 
 \subsubsection{Ecore Tools} % Sirius based
 The \emph{Ecore Tools} editor is based on Sirius (see \cref{sec:sirius}).
-It displays diagrams as \gls{UML} Class Diagrams.
+It displays diagrams as \gls{UML} Class Diagrams in the \gls{Eclipse}.
+
+A screenshot of the Ecore Tools editor is shown in \cref{fig:ecore-tools-screenshot}.
+
+\begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
+  \centering
+  \includegraphics[width=\textwidth]{figures/ecore-eclipse-sirius-aird-graphical-editor.png}
+  \caption[Ecore Tools Screenshot]{Ecore Tools in \gls{Eclipse} with a model opened.}\label{fig:ecore-tools-screenshot}
+\end{figure}
+
 
 \subsubsection{ecore-glsp} %Theia
