@@ -1,0 +1,20 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{longtable}
+% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+\begin{longtable}{lll}
+\caption{Functional requirements for a master-detail Tree editor with property sheet.}
+\label{tab:function-requirements}\\
+\multicolumn{1}{c}{\textbf{ID}} & \multicolumn{1}{c}{\textbf{Requirement}}                                            & \multicolumn{1}{c}{\textbf{Description}}                                                                                                                                                                                                  \\ \hline
+\endfirsthead
+%
+\multicolumn{3}{c}%
+{{\bfseries Table \thetable\ continued from previous page}} \\
+\multicolumn{1}{c}{\textbf{ID}} & \multicolumn{1}{c}{\textbf{Requirement}}                                            & \multicolumn{1}{c}{\textbf{Description}}                                                                                                                                                                                                  \\ \hline
+\endhead
+%
+FR1                             & Provide an interactive Tree Editor in VSCode and Theia (Gitpod)                     & \begin{tabular}[c]{@{}l@{}}The software must use an extension mechanism to provide a custom editor for trees.\\ A textual representation is not sufficient.\\ The tree comprises a hierarchy of nodes and their child nodes.\end{tabular} \\
+FR2                             & Provide an interactive Property sheet in VSCode and Theia (Gitpod)                  & \begin{tabular}[c]{@{}l@{}}The software must use an extension mechanism to provide a custom property sheet for tree nodes.\\ The property sheet needs to be synchronized with the selected node in the tree editor.\end{tabular}          \\
+FR3                             & The Tree must view nodes with labels and icons.                                     & \begin{tabular}[c]{@{}l@{}}Every node should have a default icon that depends on its node "type".\\ Every node should have a name that is read from the node data.\end{tabular}                                                           \\
+FR4                             & Tree nodes with children can toggle the visibility of children by user interaction. & \begin{tabular}[c]{@{}l@{}}An icon or symbol will show if a node has children.\\ If the user interacts with this icon, e.g. a click, all the children will toggle their visibility on/off.\end{tabular}                                   \\
+FR5                             & The Tree and Property views update automatically when the underlying model changes. &                                                                                                                                                                                                                                          
+\end{longtable}

@@ -31,10 +31,12 @@ The \acrshort{EMOF} specification is created by \acrfull{OMG}.
 The result is that \gls{Ecore} is an implementation of \gls{UML} Class Diagrams and compatible with other models based on MOF.
 
 % XMI
-\paragraph*{Serialization and XMI} When an \gls{Ecore} model is written as a text file, it needs \textit{serialization}.
+\paragraph*{Serialization} When an \gls{Ecore} model is written as a text file, it needs \textit{serialization}.
 The official format for serializing Ecore is \acrfull{XMI}.
 \Acrshort{XMI} is based on XML, and is another standard from \acrshort{OMG}.
 Models created in \gls{Ecore} can also be serialized to \acrshort{XMI}, as can their model instances.
+Other formats for serialization of \gls{Ecore} exist, like the more web-friendly \gls{JSON} format.
+
 
 % Genmodel
 \paragraph*{Code generation with genmodel}
@@ -46,10 +48,14 @@ By default it will create an \gls{Eclipse} plugin, but the target platform can a
 
 % Edit and Editor?
 
+% XText?
+% TODO: write
+% LSP
+
 \subsubsection{Sirius}\label{sec:sirius}
 % What is Sirius?
 \paragraph*{What it is} Eclipse Sirius is a framework for creating  domain-specific modeling workbenches.~\cite{eclipsefoundationSiriusEasiestWay}
-It is an \gls{Eclipse} plugin, which focuses on creating visual editors like interactive diagrams.
+It is an \gls{Eclipse} addon, which focuses on creating visual editors like interactive diagrams.
 An illustration of Sirius' internal architecture is shown in \cref{fig:sirius-architecture}.
 
 Sirius can create editors for an existing \gls{Ecore} model, but does not rely on code generation.~\cite{eclipsefoundationSiriusEasiestWay}

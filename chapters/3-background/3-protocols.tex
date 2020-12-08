@@ -32,8 +32,8 @@ The protocol is based on a \emph{Base protocol}, which has a \texttt{key-value} 
 \paragraph*{The Base protocol}
 The header fields conform to the HTTP specification\footnote{RFC-7230 at \href{https://tools.ietf.org/html/rfc7230\#section-3.2}{https://tools.ietf.org/html/rfc7230\#section-3.2}.} with regards to structure and formatting.
 
-The Base protocol defines tree different message types that are sent in the \gls{JSON-RPC} content: \emph{Request}, \emph{Response} and \emph{Notificaion}.
-There are also two key rules: every Request must be answered with a Response, and Notificaion does not need a Response.
+The Base protocol defines tree different message types that are sent in the \gls{JSON-RPC} content: \emph{Request}, \emph{Response} and \emph{Notification}.
+There are also two key rules: every Request must be answered with a Response, and Notification does not need a Response.
 The Base protocol provides a list of common error codes, extending the default error codes that \gls{JSON-RPC} provides.~\cite{microsoftLanguageServerProtocol2020}
 
 The Base protocol defines a rule for Request and Notification methods as well: a method starting with \texttt{\$/} is protocol implementation specific and therefore optional, meaning a client or server can skip implementing it if the method is not suitable\footnote{The example given is cancellation of asynchronous tasks in a server that is synchronous.}.~\cite{microsoftLanguageServerProtocol2020}

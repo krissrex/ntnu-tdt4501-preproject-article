@@ -92,13 +92,13 @@ The last question is \cref{rq:4}:
   \input{research-questions/4-how-reuse.tex}
 \end{displayquote}
 
-It seems existing tools that can be ran standalone as servers or command line tools can be reused.
+It seems existing tools that can be run standalone as servers or command line tools can be reused.
 For example, \gls{LSP} shows this, by letting language servers execute what they want internally, like existing compilers.
 Bridging the gap between old programs and new could be done by exposing them over an \gls{API}, such as \gls{REST} or \gls{JSON-RPC}. The Model Server (\cref{sec:model-server}) does this, and hides away java and \gls{Ecore} model parsing behind a \gls{REST} \acrshort{API}.
 
 % TODO: write some more. Architecture. LSP, Model server, generic frontends.
 
-\section{New Research Questions}
+\section{Planned Contribution}%New Research Questions
 
 \begin{questions}[leftmargin=1cm,resume]
   \item \emph{How can we design an Ecore master-detail tree editor that works in both VSCode and Theia, while reusing existing tools for Ecore such as codegen and validation?}\label{rq:21}
