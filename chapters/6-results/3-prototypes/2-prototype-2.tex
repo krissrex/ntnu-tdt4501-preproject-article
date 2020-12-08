@@ -1,9 +1,32 @@
 \subsection{Prototype 2}
-%TODO: write. RQ to answer
+
+This prototype tries to answer \cref{rq:23}, \cref{rq:24}, \cref{rq:25} and \cref{rq:26}:
+\begin{displayquote}
+  \input{research-questions/reviewed/3-how-cooperate.tex}
+  \input{research-questions/reviewed/4-what-data.tex}
+  \input{research-questions/reviewed/5-how-generic.tex}
+  \input{research-questions/reviewed/6-how-constrain-ui.tex}
+\end{displayquote}
+
 \subsubsection{Requirements}
 %TODO: write
+
+\begin{itemize}
+  \item Develop using VSCode extension \acrshort{API} (see \cref{sec:vscode-extension}). No dependencies to Theia.
+  \item Visualize a tree structure in the editor, based on a object structure (e.g. \gls{JSON}).
+  \item Show labels and icons for nodes in the tree. Labels will be from node \emph{type}, labels from node data.
+  \item Add and remove nodes in the tree from user interaction.
+  \item Property sheet editor that is synchronized with tree selection.
+  \item Visualize both an Ecore meta-model and model instance.
+  \item Use EMF.Cloud Model Server (\cref{sec:model-server}) to get the model. Do not read the \texttt{.ecore} file from disk in the extension.
+  \item Automatically update the views when the underlying model changes (push not poll)
+\end{itemize}
+
+The \textit{design document} used for implementation is added in \cref{app:prototype-2-design-doc}.
+
 \subsubsection{Implementation}
 %TODO: write
+
 \subsubsection{Results}
 %TODO: write
 
