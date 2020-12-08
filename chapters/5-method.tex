@@ -1,14 +1,37 @@
 \chapter{Method}
 
 \paragraph*{How to answer the research questions}
-To solve the sub-research questions \cref{rq:22} to \cref{rq:26}, a design and creation approach will be used.
+To answer the sub-research questions \cref{rq:22} to \cref{rq:26}, a design and creation approach will be used.
 Developing prototypes and testing them in the real environment can quickly remove doubts about feasibility, as long as the prototype works.
 (In case a prototype fails to demonstrate a working approach, a new approach will have to be designed and tested in a new prototype.
 If no new design can be made, then the background material needs further research.)
 
-\paragraph*{Software requirements for a solution}
+To answer the main question, \cref{rq:21}, an analysis of existing tools will form the requirements for the editor.
+The findings from \cref{rq:22} to \cref{rq:26} will influence the solution, and existing architectures and protocols will also be used as inspiration.
 
-\input{tables/1-functional-requirements.tex}
+The answer to \cref{rq:21} will be a design, like diagrams and requirements.
+It will not be a full implemented software solution, because of the limited scope of this pre-master's thesis specialization project.
+An implementation will instead be explored in the following master's thesis.
+
+\paragraph*{Data generation method}
+To find data that can answer the research questions, I will use documentation on the internet from \gls{open source} software related to modeling.
+Discovering the related software and documentation will be done by:
+\begin{itemize}
+  \item exploring the Eclipse Foundation's project umbrellas for related software
+  \item inspecting the source code of existing \gls{Eclipse} \gls{Ecore} editors (discussed in \cref{sec:ecore-editors})
+  \item searching with internet search engines (Google, GitHub) for \gls{emf} related libraries
+  \item viewing presentations from \emph{EclipseCon 2020}\footnote{This is a developer conference by Eclipse Foundation. The 2020 conference has an agenda that aligns very well with modeling in the \gls{cloud}.} about \gls{emf} modeling, Sirius Web (\cref{sec:sirius-web}), \acrshort{GLSP}
+  \item ask questions during\footnote{The conference happened during this thesis, and was virtual, so this was possible.} or after EclipseCon to presenters or key personalities 
+  \item inspecting GitHub organizations that contribute modeling projects, to see if they offer other related projects
+  \item inspecting developer documentation, guides and wiki pages for software, to find related documents
+  \item inspect software dependencies\footnote{(Usually listed in files like \texttt{pom.xml} and \texttt{package.json})} in discovered libraries, to find other related libraries 
+\end{itemize}
+
+\paragraph*{Data analysis}
+The results will be analyzed qualitative to give a clear view of the state of the art, current developments, possibilities for new development and insight into the architectures and protocols already in use.
+Together, this will form the basis of a new tool's requirements and design.
+
+
 
 % What is a good solution
 %  - How it fits into an existing ecosystem
