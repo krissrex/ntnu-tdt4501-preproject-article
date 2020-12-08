@@ -1,6 +1,26 @@
 \subsection{Protocols}\label{sec:protocols}
 
-This section will describe some of the protocols used by the editors in \cref{sec:editors} and extensions in \cref{sec:extension-components}.
+This section will describe some of the protocols used by the \glspl{IDE} in \cref{sec:editors} and extensions in \cref{sec:extension-components}.
+
+\subsubsection{JSON-RPC}
+
+\paragraph*{Description}
+\emph{JSON-RPC} is a stateless \acrfull{RPC} protocol.
+That means it allows one process to call \emph{procedures} (methods, subroutines, functions) in another process.
+The format for serializing the calls' data is \gls{JSON}.
+A key design goal is to be a simple protocol.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+
+The protocol does not limit the \emph{transport mechanism} used, so \gls{JSON-RPC} could be sent inside the same process, across sockets, HTTP or any other form of message passing transport.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+
+\paragraph*{Protocol}
+The main definitions are data structures and error codes.
+\Gls{JSON-RPC} defines a \texttt{Request} and \texttt{Response} object.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+
+The Request must have an \texttt{id}, \texttt{method} name, \texttt{params} data structure and \texttt{jsonrpc} version field.
+A Request without an \texttt{id} is a \texttt{Notification}, and will not get a Response back.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+
+The Response must have an \texttt{id}, \texttt{result} or \texttt{error} data structure, and a \texttt{jsonrpc} version field.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+
 
 \subsubsection{Language Server Protocol (LSP)}\label{sec:lsp}
 
@@ -63,24 +83,38 @@ Note that this is only a small subset of the data structures defined in \gls{LSP
 
 \subsubsection{Graphical Language Server Platform (GLSP)}\label{sec:glsp}
 
-% TODO: write
-% https://github.com/eclipse-glsp/glsp#features
+\paragraph*{Goal}
+The \emph{Eclipse \gls{GLSP}} tries to create an analogous protocol to \gls{LSP}, but for graphical diagram editors.
+It wants to be a solution for reusable \emph{graphical} language servers as well as generic clients.~\cite{jonashelmingGraphicalLanguageServer2019}
+An illustration of \gls{GLSP} is shown in \cref{fig:glsp-overview}.
 
-\subsubsection{JSON-RPC}
+\begin{figure}[htbp]  
+  \centering
+  \includegraphics[width=\textwidth]{figures/glsp-overview.png}
+  \caption[GLSP Overview]{An overview of the \gls{GLSP}.~\cite{eclipsefoundationGLSP2020}}\label{fig:glsp-overview}
+\end{figure}
 
-\paragraph*{Description}
-\emph{JSON-RPC} is a stateless \acrfull{RPC} protocol.
-That means it allows one process to call \emph{procedures} (methods, subroutines, functions) in another process.
-The format for serializing the calls' data is \gls{JSON}.
-A key design goal is to be a simple protocol.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+\paragraph*{Details}
+Being a platform, it aims a bit wider than the \gls{LSP} protocol by providing several implementations.
+The platform has client and server implementations that speak the \gls{GLSP} protocol, and integrations into some \glspl{IDE}.
+The client deals with rendering and user feedback, for example during drag-and-drop.
+The server handles the diagram logics, validation and layouting.~\cite{jonashelmingGraphicalLanguageServer2019}
 
-The protocol does not limit the \emph{transport mechanism} used, so \gls{JSON-RPC} could be sent inside the same process, across sockets, HTTP or any other form of message passing transport.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+The client uses technologies like Sprotty (\cref{sec:sprotty}), Typescript and \acrshort{svg}.
+The server uses java, and has an existing integration with \gls{emf}.~\cite{eclipsefoundationGLSP2020}
 
-\paragraph*{Protocol}
-The main definitions are data structures and error codes.
-\Gls{JSON-RPC} defines a \texttt{Request} and \texttt{Response} object.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+\paragraph*{The protocol}
+The protocol is based around client-server communication over \gls{JSON-RPC}.
+As with \gls{LSP}, one server is only responsible for one client.
+The messages sent are inspired by the protocol used by Sprotty, but extended with user editing capabilities.~\cite{philiplangerEclipseglspGlspPROTOCOL2020}
 
-The Request must have an \texttt{id}, \texttt{method} name, \texttt{params} data structure and \texttt{jsonrpc} version field.
-A Request without an \texttt{id} is a \texttt{Notification}, and will not get a Response back.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+A core concept of the protocol is \emph{Action}, which is sent in a \emph{ActionMessage}.
+All communication happends by sending Actions.
+Actions are identified by a \texttt{kind}, and can be mapped to a concrete Action implementation by this kind.~\cite{philiplangerEclipseglspGlspPROTOCOL2020}
+There are four main types of action: \emph{RequestAction}, \emph{ResponseAction}, \emph{RejectAction} and \emph{Operation}.
+A RequestAction must be answered by a ResponseAction or rejected by a RejectAction.
+Operations are requests from the client to modify the model.
+Modifications are always done on the server.~~\cite{philiplangerEclipseglspGlspPROTOCOL2020}
 
-The Response must have an \texttt{id}, \texttt{result} or \texttt{error} data structure, and a \texttt{jsonrpc} version field.~\cite{json-rpcworkinggroupJSONRPCSpecification2010}
+The protocol defines a large collection of Actions and Operations, to cover all needs of a graphical editor\footnote{A list of \gls{GLSP} features are listed at: \href{https://github.com/eclipse-glsp/glsp\#features}{https://github.com/eclipse-glsp/glsp\#features}.}.
+
