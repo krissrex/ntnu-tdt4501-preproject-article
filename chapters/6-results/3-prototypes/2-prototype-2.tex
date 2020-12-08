@@ -10,9 +10,23 @@ This prototype tries to answer \cref{rq:23}, \cref{rq:24}, \cref{rq:25} and \cre
 
 \subsubsection{Requirements}
 
-Cooperation in \cref{rq:23} could possibly be solved by channeling and model edits through a Model Server. An example of this was seen in the \emph{Coffee Editor} reference implementation for \gls{GLSP}\footnote{}.
+\paragraph*{Cooperation (\cref{rq:23})}
+Cooperation in \cref{rq:23} could possibly be solved by channeling any model edits through a Model Server, and listening to this server for change notifications. An example of this was seen in \cref{sec:coffee-ide} with the \emph{Coffee Editor} reference implementation for \gls{GLSP} (\cref{sfig:coffee-example-glsp}).
 
+\paragraph*{Tree model (\cref{rq:24})}
+By displaying an example tree, the required data will be evident as the view is implemented.
 
+\paragraph*{Generic actions (\cref{rq:25})}
+By supporting actions through buttons in the user interface, but not hardcoding their clicks to trigger an action, they can be generic.
+This means a click must only notify something that an \emph{intent} to trigger action \texttt{XYZ} has happened.
+Implementing a skeleton for this would show what data is required for generic actions.
+
+\paragraph*{Constrain tree for validity (\cref{rq:26})}
+This is relevant especially for drag-and-drop, where a user should not be able to drop a node onto an ``incorrect'' parent.
+Due to time constraints, drag-and-drop will not be implemented now.
+But the supporting data structure could be sketched out, based on the previous data structures for the Tree model in \cref{rq:24}.
+
+\paragraph*{Here is the list of identified requirements for this prototype:}
 
 \begin{itemize}
   \item Develop using VSCode extension \acrshort{API} (see \cref{sec:vscode-extension}). No dependencies to Theia.
