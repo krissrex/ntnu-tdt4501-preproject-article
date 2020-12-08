@@ -49,10 +49,12 @@
   "latex-workshop.latex.clean.fileTypes": [
     "*.aux",
     "*.bbl",
+    "*.bcf",
     "*.blg",
     "*.idx",
     "*.ind",
     "*.lof",
+    "*.lol",
     "*.lot",
     "*.out",
     "*.toc",
@@ -69,6 +71,8 @@
     "*.snm",
     "*.nav",
     "*.dvi",
-    "*.synctex.gz"
+    "*.synctex.gz",
+    "__latexindent_temp*",
+    "__latexindent_temp.tex",
 ],
 }
