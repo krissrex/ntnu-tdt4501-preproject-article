@@ -112,7 +112,7 @@ Of particular interest is the \texttt{Extensions} component with \texttt{Inversi
 Every extension in Theia is organized based on the runtime dependencies.
 This is similar to how \gls{VSCode} does it.
 See \cref{fig:theia-organization}. The main difference is \texttt{electron-sandbox} in \gls{VSCode} and \texttt{electron-main} in Theia.
-Every Theia extension can also provide two entrypoints: \texttt{frontend} and \texttt{backend}. This allows extensions to provide different code for the different parts of Theia. %TODO: Add cref to theia extensions
+Every Theia extension can also provide two entrypoints: \texttt{frontend} and \texttt{backend}. This allows extensions to provide different code for the different parts of Theia (see \cref{sec:theia-extension}).
 
 \begin{figure}[htbp]  % order of priority: h here, t top, b bottom, p page
   \centering
@@ -135,4 +135,54 @@ Every Theia extension can also provide two entrypoints: \texttt{frontend} and \t
 \paragraph*{Intended use}
 
 \paragraph*{Architecture}
+
+% Coffee editor exmaple?
+% TODO: write
+
+\subsubsection{Coffee Editor IDE}\label{sec:coffee-ide}
+
+\paragraph*{What it is}
+The \emph{Coffee Editor IDE} is an example and reference implementation for a \gls{Theia}-based \gls{IDE}.
+It uses Theia as its core, but adds more functionality through extensions (see \cref{sec:theia-extension}).
+The Coffee Editor IDE has a graphical editor based on \gls{GLSP}, a form based editor using JSON-Forms (see \cref{sec:json-forms}), a tree editor using Theia Tree Editor (see \cref{sec:theia-tree-editor}), textual \acrshort{DSL} using XText (see \cref{sec:xtext}) and \gls{LSP} (see \cref{sec:lsp}).
+An illustration of the Coffee Editor IDE is shown in \cref{fig:coffee-editor-overview}.
+
+\begin{figure}[htbp] 
+  \centering
+  \includegraphics[width=\textwidth]{figures/coffee-maker-example}
+  \caption[Coffee Editor IDE Overview]{An overview of the Coffee Editor IDE components.\cite[p.~4]{philiplangerWebbasedModelingTools2020}}\label{fig:coffee-editor-overview}
+\end{figure}
+
+\paragraph*{Intended use}
+The main purpose is to show how existing editor extension components (\cref{sec:extension-components}) can be used in a real example.
+This is not intended to be used by any users.
+
+\paragraph*{Architecture}
+Based on Theia with Theia Extensions and a java binary in the backend for ``analysis''\footnote{It does no analysis, it is just a proof-of-concept that sends data and views in in a graph in Theia.}.
+The different editors (graphical, form, tree, textual DSL) all communicate to a shared Model Server (\cref{sec:model-server}).
+This is shown in \cref{fig:coffee-maker-model-server}.
+How the \gls{GLSP} and \gls{LSP} frontend components get their view of the model is by talking through the Theia extension, to a \emph{Connector} in the extension, which then talks to a \gls{GLSP}/\gls{LSP} server.
+This server talks to the shared Model Server (see \cref{sec:model-server}) process. This is shown in \cref{fig:coffee-example-servers}.
+
+\begin{figure}[!htb] 
+  \centering
+  \includegraphics[width=\textwidth]{figures/coffee-maker-architecture.png}
+  \caption[Coffee Editor IDE Model Server]{The Coffee Editor uses a Model Server to coordinate the different editors.~\cite[p.~9]{philiplangerWebbasedModelingTools2020}}\label{fig:coffee-maker-model-server}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[b]{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/coffee-maker-glsp}
+        \caption{\Gls{GLSP} Editor talks indirectly to the Model Server.~\cite[p.~17]{philiplangerWebbasedModelingTools2020}}\label{sfig:coffee-example-glsp}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/coffee-maker-Xtext-LSP}
+        \caption{\Gls{LSP} Editor talks indirectly to the Model Server.~\cite[p.~23]{philiplangerWebbasedModelingTools2020}}\label{sfig:coffee-example-lsp}
+    \end{subfigure}
+    \caption{How editors in the Coffee Editor IDE are synchronizing their model data by sharing a Model Server.}\label{fig:coffee-example-servers}
+\end{figure}
 
