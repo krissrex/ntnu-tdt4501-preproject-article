@@ -1,4 +1,4 @@
-\subsection{Ecore Editors}
+\subsection{Ecore Editors}\label{sec:ecore-editors}
 
 This section describes some of the existing editors for \gls{Ecore} models.
 Most of them are provided in the \gls{Eclipse}.
@@ -66,7 +66,7 @@ A screenshot of the Ecore Tools editor is shown in \cref{fig:ecore-tools-screens
 \end{figure}
 
 
-\subsubsection{EMF.Cloud --- ecore-glsp} %Theia
+\subsubsection{EMF.Cloud --- ecore-glsp}\label{sec:ecore-glsp} %Theia
 The \emph{ecore-glsp} is an \gls{open source}\footnote{ecore-glsp source: \href{https://github.com/eclipse-emfcloud/ecore-glsp}{https://github.com/eclipse-emfcloud/ecore-glsp}.} \gls{Theia} \emph{Extension} (\cref{sec:theia-extension}) originally created by EclipseSource.
 The project was donated to Eclipse EMF.Cloud.
 It renders \gls{Ecore} models as diagrams, similar to Ecore Tools.
@@ -74,7 +74,7 @@ It renders \gls{Ecore} models as diagrams, similar to Ecore Tools.
 The extension is made using \gls{GLSP} (\cref{sec:glsp}) and Sprotty (\cref{sec:sprotty}).
 When using the plugin, diagram layouts are persisted to a separate \texttt{.enotation} \gls{XMI} file.~\cite{camilleletavernierEclipseemfcloudEcoreglsp2020}
 
-Although it only supports \gls{Theia}, if a \gls{GLSP} integration for \gls{VSCode} existed, the ecore-glsp could possibly be adapted to a VSCode extension (see \cref{sec:vscode-extension}). (As of now, only \gls{Theia} and \gls{Eclipse} have \gls{GLSP} integration libraries. But these libraries are mostly ``glue code'').
+Although it only supports \gls{Theia} now, a developer using the \gls{GLSP} integration for \gls{VSCode} could possibly adapt it to a VSCode extension (see \cref{sec:vscode-extension}). A \gls{VSCode} integration library is created by EclipseSource\footnote{VSCode glsp integration source: \href{https://github.com/eclipsesource/glsp-vscode-integration}{https://github.com/eclipsesource/glsp-vscode-integration}.}.
 
 The scope of the ecore-glsp library seems to extend beyond just diagrams.
 The Github issues\footnote{Tree editor issue: \href{https://github.com/eclipse-emfcloud/ecore-glsp/issues/45}{https://github.com/eclipse-emfcloud/ecore-glsp/issues/45}.}\footnote{Model server issue: \href{https://github.com/eclipse-emfcloud/ecore-glsp/issues/28}{https://github.com/eclipse-emfcloud/ecore-glsp/issues/28}.}\footnote{Property view issue: \href{https://github.com/eclipse-emfcloud/ecore-glsp/issues/53}{https://github.com/eclipse-emfcloud/ecore-glsp/issues/53}.} indicate that the developers want to add a tree editor, property view, validation and a model server.

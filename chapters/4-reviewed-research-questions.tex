@@ -1,2 +1,112 @@
 \chapter{Reviewed Research Questions}\label{chap:review-research-questions}
 
+The research questions were presented in \cref{chap:research-questions}.
+Some of them can be answered, at least to some extent, by the background material in \cref{chap:background}.
+
+\section{The Old Research Questions}
+
+\paragraph*{Modernizing \acrshort{mdd}}
+First, lets look at \cref{rq:1}:
+\begin{displayquote}
+  \input{research-questions/1-how-modernize.tex}
+\end{displayquote}
+
+It appears this modernization is already in progess.
+With the introduction of \emph{Sirius Web} (\cref{sec:sirius-web}) and \emph{ecore-glsp} (\cref{sec:ecore-glsp}), \gls{Ecore} editors in \gls{cloud} based \glspl{IDE} are coming.
+In addition, \gls{Ecore} code generation can already target web browsers using \emph{ecore.js} or \emph{crossecore-typescript}. % TODO: link to chapters
+
+
+The use of more a more popular serialization format, \gls{JSON} instead of XML/\gls{XMI}, is being used to \textit{some} extent.
+Most of the current efforts are still serializing to disk as \gls{XMI}, using only \gls{JSON} inside protocols for data transfer.
+This \emph{could} be an advantage, however, to keep the interoperability between different tools.
+Most of the developers' work is not done directly in these files, but instead with graphical interfaces. Therefore, this is perhaps not a big issue.
+
+
+The biggest blocker right now is just implementation: not all features are supported yet.
+Another concern is targeting only \gls{Theia}, as is the case for ecore-glsp with its use of Theia Extension (\cref{sec:theia-extension}).
+This prevents usage in \gls{VSCode}\footnote{Although not a \gls{cloud} editor (yet? \href{https://github.com/features/codespaces}{https://github.com/features/codespaces}), it is very popular.~\cite{stackoverflowStackOverflowDeveloper2019}}, and also in Gitpod.
+It could possibly be used in Che, by customizing the \gls{IDE} used\footnote{This may need help from a system administrator. Alternatively, a user can compile their own Docker image with a modified Theia instance, and specify it in a devfile.~\cite{maxshaposhnikIntroductionDevfile2020}}.
+
+
+\paragraph*{Essential tools}
+Next up is \cref{rq:2}:
+\begin{displayquote}
+  \input{research-questions/2-what-tools.tex}
+\end{displayquote}
+
+The model editor seems like the obvious answer. 
+Two different types of model editor were found.
+There are tree and property editors, and graphical diagram editors.
+These should support both the general \gls{Ecore} model and model instances.
+Some editors also support the genmodel.
+
+In addition, there is validation, comparison and code generation.
+Of these, code generation seems most essential, and validation second.
+The ongoing development in \cref{sec:ecore-editors} on ecore-glsp also seems to share this view: diagram editor first, then code generation, then validation last\footnote{Ecore-glsp already supports genmodel and EMF Codegen: \href{https://github.com/eclipse-emfcloud/ecore-glsp/issues/10}{https://github.com/eclipse-emfcloud/ecore-glsp/issues/10}.}.
+
+Even though personal experience with \gls{emf} relied mainly on a tree editor, little focus has been on implementing \gls{Ecore} tree editors in the \gls{cloud} yet.
+There is the generic Theia Tree Editor (\cref{sec:theia-tree-editor}), but it has not been applied to \gls{Ecore} yet.
+A generic tree editor could work with models, model instances and the genmodel, making it a ``one solution to rule them all'', compared to diagram editors.
+This is what \gls{Eclipse} has already, like the Sample Reflective Ecore Model Editor and the EMF Forms based editor.
+
+Validation and code generation tools could be embedded in VSCode extensions as executables, and ran as VSCode commands or from a tree editor.
+They do not require special user interfaces.
+
+\paragraph*{A good tool}
+Perhaps more on the side of \textit{usability}, or \textit{minimum viable product} requirements, is \cref{rq:3}:
+\begin{displayquote}
+  \include{research-questions/3-what-is-good.tex}
+\end{displayquote}
+
+What it \emph{looks like} is not mainly about visuals, but about its software architecture and functional requirements.
+\textit{What does it do}?
+And \textit{how} does the tool do something?
+
+First off, flexibility seems to be key.
+Flexibility and extensibility in the protocols used, and configurability with regards to details.
+It is hard to define everything up front, so some leeway for tool developers is left in.
+Custom protocol messages; optional functionality.
+Using dependency injection in order to create an extendible system seems popular in this cohort of developers as well.
+For example \gls{Theia}, Sprotty and \gls{GLSP} all do this.
+
+Second is configuration. 
+It is hard to predict everything, so exposing details as configuration options allows solutions to arise for unknown situations.
+An example is \textit{java}: a lot of the \gls{emf} ecosystem exists as java code, and could be embedded as \texttt{.jar} files, but \emph{where is java installed} on the workspace operating system, and which java version?
+With new environments like Gitpod and Che, some old assumptions do not hold\footnote{Example: you assume \texttt{java} can be invoked from the OS Path, but what if it is ran as a Docker container instead with \texttt{docker run}?}.
+
+Third is to augment models instead of extending their serialization format.
+Most of the tools store some extra data, like layout or options.
+These pieces of information are stored in files separate from the \texttt{.ecore} model, such as \texttt{.aird}, \texttt{.json} and \texttt{.genmodel}.
+Common is the usage of \gls{XMI}, but some use \gls{JSON}.
+
+Fourth is a client-server separation, both because \gls{Theia} is distributed, but also to have reusable (generic) clients and reusable servers like \gls{LSP}.
+Runtime dependencies may dictate how code is organized, for extensions that work across browsers, \gls{Electron} and \gls{Nodejs}.
+
+% Fifth: using Ecore models internally? Used by some: Command API, Tree structure, maybe more
+
+% Sixth: look for requirements in existing tools, like validation, undo/redo, refacotring, references, renaming etc?
+
+\paragraph*{Reusing tools and architectures}
+The last question is \cref{rq:4}:
+\begin{displayquote}
+  \input{research-questions/4-how-reuse.tex}
+\end{displayquote}
+
+It seems existing tools that can be ran standalone as servers or command line tools can be reused.
+For example, \gls{LSP} shows this, by letting language servers execute what they want internally, like existing compilers.
+Bridging the gap between old programs and new could be done by exposing them over an \gls{API}, such as \gls{REST} or \gls{JSON-RPC}. The Model Server (\cref{sec:model-server}) does this, and hides away java and \gls{Ecore} model parsing behind a \gls{REST} \acrshort{API}.
+
+% TODO: write some more. Architecture. LSP, Model server, generic frontends.
+
+\section{New Research Questions}
+
+\begin{questions}[leftmargin=1cm]
+  \item \emph{How can we design an Ecore master-detail tree editor that works in both VSCode and Theia, while reusing existing tools for Ecore such as codegen and validation?}\label{rq:21}
+  \begin{questions}
+    \item \emph{How can java applications be used in a VSCode extension?}\label{rq:22}
+    \item \emph{How should the editor cooperate with multiple other tools that change the same underlying model?}\label{rq:23}
+    \item \emph{What data is required for displaying a model as a tree?}\label{rq:24}
+    \item \emph{How can a tree editor component be generic enough to support arbitrary user actions?}\label{rq:25}
+    \item \emph{How can the user interface know the model well enough so the user is constrained from creating invalid Ecore trees?}\label{rq:26}
+  \end{questions}
+\end{questions}
