@@ -130,14 +130,22 @@ Every Theia extension can also provide two entrypoints: \texttt{frontend} and \t
 % Architecture
 
 \paragraph*{What it is}
-%TODO: write
+One of the older \glspl{IDE}. 
+Originally desktop based, but some web frontends have been made (like \gls{RAP}).
+Popular for java development and the main \gls{IDE} used by \gls{emf}.
+It also serves as a framework for building user interfaces, as in \gls{RCP} and generated model editors (from genmodel).
 
 \paragraph*{Intended use}
+\Gls{Eclipse} is intended to be used as a \gls{IDE} and also framework for desktop based editors via \gls{RCP}.
+It is very flexible, with support for addons/plugins that extend its capabilities.
 
 \paragraph*{Architecture}
-
-% Coffee editor exmaple?
-% TODO: write
+The \gls{Eclipse} is based on a core platform that loads other plugins and features to extend itself.
+The core mechanism is OSGi and plugin manifests, along with Eclipse's extension points.
+OSGi will load plugins and use dependency injection to connect components together.
+The extension points are predefined areas of the \acrshort{IDE} where plugins can add functionality.
+Plugins can also expose their own contribution points.
+The plugin manifest specifies where a plugin will contribute, like which extension points should be added to.
 
 \subsubsection{Coffee Editor IDE}\label{sec:coffee-ide}
 
