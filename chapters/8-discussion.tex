@@ -4,3 +4,36 @@
 % With regards to research questions
 
 % TODO: write
+\emph{Because this is a specialization project before a masters thesis, the emphasis has not been on discussion. Only a brief discussion follows.}
+
+\par
+The prototypes provided promising results as expected.
+Realization of a such Tree Editor should be possible.
+One unexpected finding was that Theia Tree Editor (\cref{sec:theia-tree-editor}) relied on the Theia core, and could not be used in VSCode.
+This claim that it does not work in VSCode has not been tested.
+There is still a possibility for it to work, if the dependencies are mostly for data structures and not functionality.
+Further work could test this in a prototype.
+In the event that it \emph{does} work, much effort could be saved.
+
+\par
+It seems to become a pattern in \gls{cloud} based \acrshortpl{IDE} to rely more on generic clients and specific servers.
+The results strengthens this, by showing that the same pattern used in \gls{LSP} and \gls{GLSP} is transferable to a Tree editor.
+
+\par
+A Tree editor will only provide the first step towards greater acceptance of \gls{mdd} in the new generation of developers.
+There is room for improvement on the code generation side as well.
+Further work could try to provide genmodel templates that result in ready-made typescript \gls{REST} \acrshortpl{API}, and editors based on Theia using Theia Extension.
+Some work has already been done with regards to \gls{REST}, but these code generation templates should be provided by the tool, out of the box.
+
+\par
+The actual data structures required for a Tree Language Server protocol are not investigated.
+The other protocols like \gls{LSP} and \gls{GLSP} center around these large collections of ready-made data structures.
+Further work could be done to identify what commands should be sent between the editor and the backends.
+The Theia Tree Editor and existing \gls{Eclipse} editors (\cref{sec:ecore-editors}) could provide a good starting point for collecting data on this.
+
+\par
+The requirements for a generic Tree editor client in \cref{sec:result-tree-editor} are not complete.
+Further work is needed to find all the requirements.
+As with the protocol, the Theia Tree Editor and existing \gls{Eclipse} editors (\cref{sec:ecore-editors}) could provide a good starting point for collecting data on this.
+No scientific literature containing requirements for a Tree editor were found.
+The closest result was \textcite{karrerRequirementsExtensibleObjectoriented1990}, which seems to focus on graphs (and interprets \emph{tree} as a graph structure, not a folder-like hierarchical structure as here).
