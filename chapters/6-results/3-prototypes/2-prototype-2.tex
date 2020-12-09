@@ -131,13 +131,47 @@ The idea is to consult this mapping when deciding if a child node can be put int
     language=JavaScript
 ]{listings/hierarchy-schema.js}
 
-%TODO add listings and screenshots
+
+\paragraph*{Model Server}
+The model server was only partially integrated, due to time constraints.
+It was started manually, and only a single endpoint was used, which was selecting the \emph{model workspace directory}.
+This is the directory where the Model Server will scan for \texttt{.ecore} and \texttt{.xmi} files.
+The extension send a request to the Model Server's \gls{REST} \acrshortpl{API} with the workspace folder.
+A testing command to create a new model file was also implemented.
+This was a VSCode Command which prompted the user for a filename.
+Then the extension would send the filename and an example EObject (serialized as \gls{JSON}) to the Model Server.
+The Model Server would create a new \gls{XMI} file when receiving this request.
+
 
 \subsubsection{Results}
-%TODO: write
+The editor worked, but due to time constraints, some features were dropped.
+Mainly user editing and model updates were not done, as well as automatic ecore-model-to-tree conversion.
+A screenshot of the model is shown in \cref{fig:prototype-2-screenshot}.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/prototype-2-screenshot.png}
   \caption[Prototype 2 Screenshot]{A screenshot of the prototype 2 in action. It has three parts: an action bar on the top right, a tree view on the left, and a property editor on the right.}\label{fig:prototype-2-screenshot}
 \end{figure}
+
+\paragraph*{Research questions}
+The answer to \cref{rq:23} is:
+\begin{displayquote}
+  \emph{By reading the model data structure from a shared model server, and only editing it by using this model server.}
+\end{displayquote}
+
+The answer to \cref{rq:24} is:
+\begin{displayquote}
+  \emph{A nested datastructure of nodes, with labels and node types, as well as properties for each node. See \cref{lst:prototype2-node-tree} for an example.}
+\end{displayquote}
+
+The answer to \cref{rq:25} is:
+\begin{displayquote}
+  \emph{By only defining actions as id and label, and sending a schema of default actions and per-node actions to the frontend. Triggering an action will only send a message to the backend Tree Language Server, where this server executes any actual change. See \cref{lst:prototype2-action-list} and \cref{lst:prototype2-action-schema}} for examples.
+\end{displayquote}
+
+The answer to \cref{rq:26} is:
+\begin{displayquote}
+  \emph{By defining a parent-child schema based on node types, that specifies which children are allowed in a parent. See \cref{lst:prototype2-hierarchy-schema} for an example.}
+\end{displayquote}
+This last answer was not properly tested due to time constraints.
