@@ -3,10 +3,34 @@
 
 \subsection{Functional requirements for final editor}
 
-%TODO: write
+Here is a list of identified requirements.
+Note that it may not be complete.
+A good source for requirements are the existing editors mentioned in \cref{sec:ecore-editors}, with regards to a complete solution with good usability.
 
 \input{tables/1-functional-requirements.tex} %TODO: make sure table is not clipping
 
 
 \subsection{Architecture and protocols}
-%TODO: write
+
+A suggestion for an architecture is to use an \emph{VSCode extension} with a \emph{WebView} and \emph{CustomEditor}.
+Connect the extension to a bundled \emph{Tree Language Server} by using \gls{JSON-RPC} or \gls{REST} and \gls{WebSocket}.
+The transport mechanism between the extension and the Tree Language Server can be either standard input/output (stdio) or TCP sockets.
+The Tree Language Server should hold any language dependent details, like mappings from \gls{Ecore} over to a generic tree structure.
+Any changes to the model should be relayed from the extension via the Tree Language Server to the Model Server.
+The extension should only talk about changes in a general manner with the Tree Language Server.
+These will be converted to \gls{Ecore} specific operations in the Tree Language Server before being sent to the Model Server over a \gls{REST} \acrshort{API}.
+A diagram with this architecture is shown in \cref{fig:tree-editor-architecture}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/tree-editor-component-diagram.png}
+  \caption[Tree Editor Architecture]{A suggested architecture for a tree editor.}\label{fig:tree-editor-architecture}
+\end{figure}
+
+\paragraph*{Sharing a Model Server}
+Because multiple extensions might require the same Model Server, an idea (not explored yet) is to have a specific VSCode Extension only for providing this Model Server.
+Other extensions can then notify a dependence on this extension, causing it to be installed.
+This seems supported at least in VSCode.
+The Model Server extension would then provide the details for connecting to it, to other extensions.
+It is possible to discover other extensions and get an \gls{API} from them.
+
