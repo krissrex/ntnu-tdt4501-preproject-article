@@ -50,5 +50,21 @@ On the other hand, recreating the entire \acrlong{emf} is no easy task. Therefor
 
 % Related works and their shortcomings
 \paragraph*{Related works}
+% 1,2,9,10
+% 1,2 existing model
+% 2,9 textual
+% 10 not ecore
+% 9 too early, before sprotty
 
-%TODO write.
+% 1: carrascal-manzanaresBuildingMDECloud2015
+% 2: coulonModularDistributedIDE2020
+% 9: sainiWebCollaborativeModelling2019
+% 10: walshClientagnosticHybridModel2020
+
+Some research related to \gls{mdd} and the \gls{cloud} has been done already.
+In \cite{carrascal-manzanaresBuildingMDECloud2015} they discuss using an existing model in the cloud.
+\textcite{coulonModularDistributedIDE2020} also uses an existing model for their deployment to a \gls{cloud} \acrshort{IDE}.
+\textcite{sainiWebCollaborativeModelling2019} discusses modeling in the web, but at an early stage before tools like Sprotty (\cref{sec:sprotty}) were ready for use.
+In \cite{walshClientagnosticHybridModel2020} they create a model editor, but for a language called \texttt{UML-RT}.
+
+None of these earlier works look at modeling in the cloud where the goal is to create \gls{Ecore} models. They either \emph{deploy} \gls{Ecore} models (\cite{carrascal-manzanaresBuildingMDECloud2015,coulonModularDistributedIDE2020}), are textual editors (\cite{coulonModularDistributedIDE2020,sainiWebCollaborativeModelling2019}) or not using \gls{Ecore} (\cite{walshClientagnosticHybridModel2020}).
