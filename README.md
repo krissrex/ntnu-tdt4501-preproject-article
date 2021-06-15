@@ -1,20 +1,16 @@
-# thesis-NTNU
+# Pre-Project: A Modeling Environment in the Cloud for Education
 
-An NTNU thesis LaTeX document class for bachelor, master, and PhD theses. It replaces previous templates like https://github.com/COPCSE-NTNU/bachelor-thesis-NTNU and https://github.com/COPCSE-NTNU/master-theses-NTNU and provides a single template for theses at all study levels.
+This is a pre-project (or specialization project) before a master's thesis at the Norwegian University of Science and Technology (NTNU) in Trondheim.
 
-## Setting up
+**Thesis title:** A Modeling Environment in the Cloud for Education  
+**Author:** Kristian Rekstad  
+**Supervisor:** Hallvard Trætteberg  
+**Published:** December 9, 2020  
+**PDF:** https://github.com/krissrex/ntnu-tdt4501-preproject-article/releases/tag/v1.0.0  
 
-You can use the template with [Overleaf](http://overleaf.com), and you are strongly encouraged to do so. The alternative is to install local copy of LaTeX on your laptop (not adviced, huge, difficult).
 
-You should **fork** the COPCSE repo so that you have your own files to edit and you can always merge with the upstream changes to the template, in case the template is updated. 
-
-### Setup using Overleaf
-
-There are two ways for setting up the [**Overleaf**](http://overleaf.com) project with the template:
-
-* Use the `.zip` copy and upload.
-* Fork the the COPCSE repo so that you have your own files to edit.
+---
 
 ### Building document locally
 
-The template also provides a simple `Makefile` which allows you to build the document locally. This requires that you have a LaTeX compiler, such as [`texlive`](https://www.tug.org/texlive/), installed locally, which has to provide the commands `pdflatex` and `biber`.
+The repo provides a simple `Makefile` which allows you to build the document locally. This requires that you have a LaTeX compiler, such as [`texlive`](https://www.tug.org/texlive/), installed locally, which has to provide the commands `pdflatex` and `biber`.
